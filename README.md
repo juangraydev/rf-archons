@@ -20,6 +20,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Edit `public/news/news.json` to update the News & Events section. Each item needs a unique numeric `id`, a `category` (`NEWS`, `EVENTS`, or `UPDATES`), `date`, `title`, `summary`, and `details`. The first item with `id` 1 is expanded by default. Rebuild and redeploy after changing the file.
 
+## Cloudflare deployment
+
+The Wrangler configuration targets the `rf-archons` Worker. If the Worker name changes, update both `name` and `services[0].service` in `wrangler.jsonc` so the self-reference matches.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

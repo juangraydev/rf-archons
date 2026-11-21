@@ -70,7 +70,7 @@ const SERVER_CHECKLIST = [
     items: [
       'No overpowered edited donations',
       'Cash Points donation',
-      'RMT priority server test',
+      'RMT priority server',
       'Guild perks',
       'Streamer perks',
     ],

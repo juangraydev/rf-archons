@@ -2,6 +2,9 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Image from 'next/image';
+import bellatoImage from '../public/Images/bcc.webp';
+import coraImage from '../public/Images/ccc.webp';
+import accretiaImage from '../public/Images/acc.webp';
 import NEWS_ITEMS from '../public/news/news.json';
 import {
   Menu,
@@ -80,6 +83,7 @@ const SERVER_CHECKLIST = [
 const RACES_DATA = {
   bellato: {
     id: 'bellato',
+    image: bellatoImage,
     tabLabel: 'BELLATO UNION',
     name: 'BELLATO UNION',
     tagline: 'MASTERS OF MECHANIZED WARFARE & ARCANE ENGINEERING',
@@ -102,6 +106,7 @@ const RACES_DATA = {
   },
   cora: {
     id: 'cora',
+    image: coraImage,
     tabLabel: 'HOLY ALLIANCE CORA',
     name: 'HOLY ALLIANCE CORA',
     tagline: 'DEVOUT WIELDERS OF DARK FORCE & ANCIENT ANIMUS',
@@ -124,6 +129,7 @@ const RACES_DATA = {
   },
   accretia: {
     id: 'accretia',
+    image: accretiaImage,
     tabLabel: 'ACCRETIA EMPIRE',
     name: 'ACCRETIA EMPIRE',
     tagline: 'RELENTLESS CYBERNETIC LEGIONS & HEAVY SIEGE ARTILLERY',
@@ -686,88 +692,17 @@ const GuildCrestSVG = ({ type, race }) => {
 };
 
 const RaceEmblemShowcase = ({ race }) => (
-  <div className="relative flex items-center justify-center w-full h-72 sm:h-80">
+  <div className="relative flex items-center justify-center w-full min-h-72">
     <div
       className="absolute w-64 h-64 rounded-full blur-3xl opacity-40 transition-all duration-500"
       style={{ background: `radial-gradient(circle, ${race.accent}, transparent 70%)` }}
     />
-    <svg viewBox="0 0 260 260" className="relative w-64 h-64 sm:w-72 sm:h-72">
-      <defs>
-        <linearGradient id={`raceGrad-${race.id}`} x1="0" y1="0" x2="260" y2="260" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#fbbf24" />
-          <stop offset="50%" stopColor={race.accent} />
-          <stop offset="100%" stopColor="#991b1b" />
-        </linearGradient>
-      </defs>
-      <circle
-        cx="130"
-        cy="130"
-        r="114"
-        fill="none"
-        stroke={race.accent}
-        strokeWidth="1"
-        strokeDasharray="8 6"
-        strokeOpacity="0.5"
-      />
-      <circle
-        cx="130"
-        cy="130"
-        r="94"
-        fill="#120b08"
-        fillOpacity="0.85"
-        stroke={`url(#raceGrad-${race.id})`}
-        strokeWidth="2.2"
-      />
-      <polygon
-        points="130,26 218,78 218,182 130,234 42,182 42,78"
-        fill="none"
-        stroke={race.accent}
-        strokeWidth="1.2"
-        strokeOpacity="0.35"
-      />
-
-      {race.id === 'bellato' && (
-        <g transform="translate(55, 48)">
-          <path
-            d="M75 18 L108 32 L116 64 L132 76 L124 114 L106 110 L102 152 L82 152 L79 116 L71 116 L68 152 L48 152 L44 110 L26 114 L18 76 L34 64 L42 32 Z"
-            fill="#1f140d"
-            stroke="#fbbf24"
-            strokeWidth="2.5"
-          />
-          <rect x="61" y="42" width="28" height="10" rx="3" fill="#fbbf24" />
-          <circle cx="75" cy="78" r="11" fill="#fbbf24" fillOpacity="0.25" stroke="#fbbf24" strokeWidth="2" />
-          <path d="M18 76 L4 94 L16 98 Z" fill="#f59e0b" fillOpacity="0.75" />
-          <path d="M132 76 L146 94 L134 98 Z" fill="#f59e0b" fillOpacity="0.75" />
-        </g>
-      )}
-
-      {race.id === 'cora' && (
-        <g transform="translate(55, 44)">
-          <path
-            d="M75 14 L92 42 L134 30 L110 74 L126 108 L92 100 L75 156 L58 100 L24 108 L40 74 L16 30 L58 42 Z"
-            fill="#241109"
-            stroke="#f97316"
-            strokeWidth="2.5"
-          />
-          <polygon points="75,38 89,68 75,98 61,68" fill="#f97316" fillOpacity="0.35" stroke="#fdba74" strokeWidth="2" />
-          <circle cx="75" cy="68" r="7" fill="#fef3c7" />
-        </g>
-      )}
-
-      {race.id === 'accretia' && (
-        <g transform="translate(55, 46)">
-          <path
-            d="M75 14 L96 28 L128 24 L134 54 L112 68 L118 112 L100 154 L84 154 L78 112 L72 112 L66 154 L50 154 L32 112 L38 68 L16 54 L22 24 L54 28 Z"
-            fill="#240d0a"
-            stroke="#ef4444"
-            strokeWidth="2.5"
-          />
-          <rect x="64" y="34" width="22" height="6" fill="#ef4444" />
-          <path d="M108 24 L144 8 L148 22 L114 38 Z" fill="#f97316" fillOpacity="0.85" />
-          <circle cx="75" cy="76" r="10" fill="#ef4444" fillOpacity="0.3" stroke="#ef4444" strokeWidth="2" />
-        </g>
-      )}
-    </svg>
+    <Image
+      src={race.image}
+      alt={`${race.name} warrior`}
+      sizes="(max-width: 1023px) calc(100vw - 32px), (max-width: 1279px) 50vw, 512px"
+      className="relative w-full max-w-[512px] h-auto object-contain"
+    />
 
     <div
       className="absolute bottom-3 px-4 py-1 rounded-full text-[11px] font-rajdhani font-bold tracking-widest uppercase border backdrop-blur-md"
@@ -1645,9 +1580,9 @@ const ThreeRacesSection = () => {
           })}
         </div>
 
-        {/* Race Showcase Split Card */}
-        <div className="cyber-card rounded-2xl bg-[#160e0b]/95 border border-orange-500/25 p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-[0_0_45px_rgba(0,0,0,0.6)]">
-          <div className="lg:col-span-7 space-y-5">
+        {/* Race Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-6 space-y-5">
             <span
               className={`inline-block px-3 py-1 rounded-full text-[11px] font-rajdhani font-bold tracking-widest uppercase border ${race.badgeClass}`}
             >
@@ -1697,7 +1632,7 @@ const ThreeRacesSection = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-6">
             <RaceEmblemShowcase race={race} />
           </div>
         </div>

@@ -24,6 +24,8 @@ Edit `public/news/news.json` to update the News & Events section. Each item need
 
 The Wrangler configuration targets the `rf-archons` Worker. If the Worker name changes, update both `name` and `services[0].service` in `wrangler.jsonc` so the self-reference matches.
 
+In Cloudflare Workers Builds, set the build command to `npm run build:cloudflare` and the deploy command to `npm run deploy:cloudflare`. The OpenNext build runs the regular Next.js build and generates `.open-next/worker.js`; the deploy command uploads that output and populates the cache.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

@@ -20,6 +20,26 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Edit `public/news/news.json` to update the News & Events section. Each item needs a unique numeric `id`, a `category` (`NEWS`, `EVENTS`, or `UPDATES`), `date`, `title`, `summary`, and `details`. The first item with `id` 1 is expanded by default. Rebuild and redeploy after changing the file.
 
+## Guilds and streamers
+
+Edit `public/guilds/guilds.json` for Active Guilds. Each entry has a unique numeric `id`, `name`, `race`, numeric `members`, `leader`, and `emblemType` (`crown`, `flame`, `shield`, `zap`, `skull`, `crosshair`, `star`, or `swords`).
+
+Edit `public/streamers/streamers.json` for Partnered Streamers. Each entry has a unique numeric `id`, `name`, boolean `live`, `viewers`, `platform`, `race`, Tailwind gradient classes in `color`, and `initials`. These files are imported at build time, so rebuild and redeploy after editing them.
+
+## Crafting guide and drop list
+
+Edit `public/crafting/crafting.json` for the Crafting Guide. Each recipe has a unique string `id`, `name`, `category`, `rarity`, `successRate`, `npc`, `race`, `tips`, and a `materials` array containing `item` and `qty` strings. Categories are generated from the recipes, and the first recipe is expanded by default.
+
+Edit `public/droplist/droplist.json` for the Drop List. Each entry has a unique string `id`, `monster`, `type`, `zone`, numeric `level`, `respawn`, and a `drops` array containing `name`, `rate`, and `tier` strings. Set `type` to `PIT BOSS` for the pit boss filter; drop tiers `intense`, `talic`, and `currency` have distinct colors, while other tiers use the material color. Zones are generated from the entries.
+
+Both files are imported at build time, so rebuild and redeploy after editing them.
+
+## Background music
+
+The site plays `public/Music/ost.mp3` on a loop. Browsers may block autoplay with sound; visitors can start or pause playback using the music button.
+
+Set `NEXT_PUBLIC_GAMECP_REGISTER_URL` in the build environment to the GameCP registration URL. The header and registration card both use this setting.
+
 ## Cloudflare deployment
 
 The Wrangler configuration targets the `rf-archons` Worker. If the Worker name changes, update both `name` and `services[0].service` in `wrangler.jsonc` so the self-reference matches.

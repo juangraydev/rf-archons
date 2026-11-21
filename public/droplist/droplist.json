@@ -1,0 +1,252 @@
+[
+  {
+    "id": "d1",
+    "monster": "Brutal Rex / Turncoat",
+    "type": "ELITE",
+    "zone": "SETTE DESERT",
+    "level": 45,
+    "respawn": "2m",
+    "drops": [
+      {
+        "name": "Excelsiar Pieces (All Colors)",
+        "rate": "38%",
+        "tier": "talic"
+      },
+      {
+        "name": "Lv.45 Intense Armor",
+        "rate": "12%",
+        "tier": "intense"
+      },
+      {
+        "name": "Silver Catalyst",
+        "rate": "22%",
+        "tier": "material"
+      },
+      {
+        "name": "Gold Catalyst",
+        "rate": "14%",
+        "tier": "currency"
+      }
+    ]
+  },
+  {
+    "id": "d2",
+    "monster": "Desert Pit Boss (Belphegor)",
+    "type": "PIT BOSS",
+    "zone": "SETTE DESERT",
+    "level": 50,
+    "respawn": "4h",
+    "drops": [
+      {
+        "name": "Elemental Accessories (Mid)",
+        "rate": "45%",
+        "tier": "currency"
+      },
+      {
+        "name": "Lv.50 Intense Weapon",
+        "rate": "60%",
+        "tier": "intense"
+      },
+      {
+        "name": "T4 Gem Box",
+        "rate": "80%",
+        "tier": "talic"
+      },
+      {
+        "name": "Leon Instruction Piece",
+        "rate": "35%",
+        "tier": "intense"
+      }
+    ]
+  },
+  {
+    "id": "d3",
+    "monster": "Caliana Archer / Crew",
+    "type": "NORMAL",
+    "zone": "ETHER PLATFORM",
+    "level": 49,
+    "respawn": "45s",
+    "drops": [
+      {
+        "name": "Gli / Beam / Rian",
+        "rate": "65%",
+        "tier": "material"
+      },
+      {
+        "name": "Cling / High-Value Loot",
+        "rate": "55%",
+        "tier": "currency"
+      },
+      {
+        "name": "Lv.50 Normal 7-Slot Weapon",
+        "rate": "18%",
+        "tier": "material"
+      }
+    ]
+  },
+  {
+    "id": "d4",
+    "monster": "Ether Pit Boss (Calliana Queen)",
+    "type": "PIT BOSS",
+    "zone": "ETHER PLATFORM",
+    "level": 53,
+    "respawn": "6h",
+    "drops": [
+      {
+        "name": "Elemental Ring / Amulet (High)",
+        "rate": "40%",
+        "tier": "currency"
+      },
+      {
+        "name": "Lv.50 Leon Weapon Box",
+        "rate": "50%",
+        "tier": "intense"
+      },
+      {
+        "name": "Ignorant & Favor Talic (x5)",
+        "rate": "100%",
+        "tier": "talic"
+      }
+    ]
+  },
+  {
+    "id": "d5",
+    "monster": "Holystone Keeper (HSK)",
+    "type": "PIT BOSS",
+    "zone": "CRAG MINE",
+    "level": 55,
+    "respawn": "Chip War",
+    "drops": [
+      {
+        "name": "Master Rune / Destruction Rune",
+        "rate": "75%",
+        "tier": "talic"
+      },
+      {
+        "name": "Lv.55 Intense Weapon Box",
+        "rate": "85%",
+        "tier": "intense"
+      },
+      {
+        "name": "T4 Gem Bundle",
+        "rate": "100%",
+        "tier": "talic"
+      },
+      {
+        "name": "Gold Pig Statue (50M)",
+        "rate": "90%",
+        "tier": "currency"
+      }
+    ]
+  },
+  {
+    "id": "d6",
+    "monster": "Rock Jaw / Taraven",
+    "type": "PIT BOSS",
+    "zone": "ELAN PLATEAU",
+    "level": 55,
+    "respawn": "8h",
+    "drops": [
+      {
+        "name": "Sealed Relic Weapon (Lv.55)",
+        "rate": "30%",
+        "tier": "intense"
+      },
+      {
+        "name": "High Elemental Accessory",
+        "rate": "55%",
+        "tier": "currency"
+      },
+      {
+        "name": "Talic Crystal",
+        "rate": "80%",
+        "tier": "talic"
+      }
+    ]
+  },
+  {
+    "id": "d7",
+    "monster": "Dagnu / Dagan / Dagon (3D)",
+    "type": "PIT BOSS",
+    "zone": "ELAN PLATEAU",
+    "level": 55,
+    "respawn": "12h",
+    "drops": [
+      {
+        "name": "Sealed Relic Weapon (Lv.55)",
+        "rate": "65%",
+        "tier": "intense"
+      },
+      {
+        "name": "3D Perfect Elemental (25/25)",
+        "rate": "45%",
+        "tier": "currency"
+      },
+      {
+        "name": "Relic Unsealing Scroll",
+        "rate": "70%",
+        "tier": "talic"
+      },
+      {
+        "name": "Lv.55 Type-C Weapon",
+        "rate": "50%",
+        "tier": "intense"
+      }
+    ]
+  },
+  {
+    "id": "d8",
+    "monster": "Black Sign Commander",
+    "type": "ELITE",
+    "zone": "BIO LAB",
+    "level": 55,
+    "respawn": "5m",
+    "drops": [
+      {
+        "name": "Lv.55 Intense Armor Part",
+        "rate": "24%",
+        "tier": "intense"
+      },
+      {
+        "name": "Ability Weapon (Lv.55)",
+        "rate": "18%",
+        "tier": "intense"
+      },
+      {
+        "name": "T3 / T4 Gems",
+        "rate": "32%",
+        "tier": "talic"
+      }
+    ]
+  },
+  {
+    "id": "d9",
+    "monster": "Naroom Captain / Kukra",
+    "type": "ELITE",
+    "zone": "BEAST MOUNTAIN",
+    "level": 53,
+    "respawn": "3m",
+    "drops": [
+      {
+        "name": "Lv.53 Intense Armor",
+        "rate": "28%",
+        "tier": "intense"
+      },
+      {
+        "name": "Crystal Talic",
+        "rate": "16%",
+        "tier": "talic"
+      },
+      {
+        "name": "Red Stone",
+        "rate": "25%",
+        "tier": "currency"
+      },
+      {
+        "name": "Rian",
+        "rate": "60%",
+        "tier": "material"
+      }
+    ]
+  }
+]

@@ -5,7 +5,12 @@ import Image from 'next/image';
 import bellatoImage from '../public/Images/bcc.webp';
 import coraImage from '../public/Images/ccc.webp';
 import accretiaImage from '../public/Images/acc.webp';
+import raceImage from '../public/Images/race.webp';
 import NEWS_ITEMS from '../public/news/news.json';
+import GUILDS_DATA from '../public/guilds/guilds.json';
+import STREAMERS_DATA from '../public/streamers/streamers.json';
+import CRAFTING_RECIPES from '../public/crafting/crafting.json';
+import DROP_LIST_DATA from '../public/droplist/droplist.json';
 import {
   Menu,
   X,
@@ -41,6 +46,8 @@ import {
   Radio,
   Copy,
   FlaskConical,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 
 // ============================================================================
@@ -191,78 +198,9 @@ const WAR_FEATURES = [
   },
 ];
 
-const GUILDS_DATA = [
-  { id: 1, name: 'EMBER VANGUARD', race: 'Bellato', members: 49, leader: 'KaelenX', emblemType: 'crown' },
-  { id: 2, name: 'SOLAR ECLIPSE', race: 'Cora', members: 50, leader: 'Vexia', emblemType: 'flame' },
-  { id: 3, name: 'IRON DOMINION', race: 'Accretia', members: 47, leader: 'TitanZero', emblemType: 'shield' },
-  { id: 4, name: 'AETHER FORGE', race: 'Bellato', members: 43, leader: 'LyraNova', emblemType: 'zap' },
-  { id: 5, name: 'ASHEN REAPERS', race: 'Cora', members: 48, leader: 'NyxShade', emblemType: 'skull' },
-  { id: 6, name: 'OMEGA SIEGE', race: 'Accretia', members: 45, leader: 'MekLord', emblemType: 'crosshair' },
-  { id: 7, name: 'VALKYRIE PROTOCOL', race: 'Bellato', members: 40, leader: 'SoraMAU', emblemType: 'star' },
-  { id: 8, name: 'NOVUS SENTINELS', race: 'Cora', members: 44, leader: 'RivenDark', emblemType: 'swords' },
-  { id: 9, name: 'MOLTEN LEGION', race: 'Accretia', members: 41, leader: 'SteelViper', emblemType: 'shield' },
-  { id: 10, name: 'GOLDEN FRONTIER', race: 'Bellato', members: 38, leader: 'JettPulse', emblemType: 'zap' },
-  { id: 11, name: 'CRIMSON COVENANT', race: 'Cora', members: 42, leader: 'KiraHex', emblemType: 'flame' },
-  { id: 12, name: 'APEX ARTILLERY', race: 'Accretia', members: 40, leader: 'Volkan99', emblemType: 'crosshair' },
-];
-
-const STREAMERS_DATA = [
-  { id: 1, name: 'IgnisGamingTV', live: true, viewers: '1.3K', platform: 'Twitch', race: 'Cora', color: 'from-orange-600 to-red-700', initials: 'IG' },
-  { id: 2, name: 'MAU_Commander', live: true, viewers: '890', platform: 'YouTube', race: 'Bellato', color: 'from-amber-500 to-orange-700', initials: 'MC' },
-  { id: 3, name: 'VolkanSiegeRF', live: true, viewers: '640', platform: 'Kick', race: 'Accretia', color: 'from-red-600 to-amber-700', initials: 'VS' },
-  { id: 4, name: 'ValkyriePlays', live: false, viewers: 'Offline', platform: 'Twitch', race: 'Bellato', color: 'from-stone-700 to-amber-900', initials: 'VP' },
-  { id: 5, name: 'ZedCyberRF', live: true, viewers: '510', platform: 'FB Gaming', race: 'Accretia', color: 'from-orange-700 to-stone-900', initials: 'ZC' },
-  { id: 6, name: 'ArchonPyro', live: true, viewers: '420', platform: 'YouTube', race: 'Cora', color: 'from-amber-600 to-red-800', initials: 'AP' },
-  { id: 7, name: 'NyxEmber', live: false, viewers: 'Offline', platform: 'Twitch', race: 'Cora', color: 'from-stone-800 to-orange-950', initials: 'NE' },
-  { id: 8, name: 'SiegeModePH', live: false, viewers: 'Offline', platform: 'FB Gaming', race: 'Accretia', color: 'from-red-900 to-stone-900', initials: 'SM' },
-  { id: 9, name: 'ChandraHeals', live: false, viewers: 'Offline', platform: 'Kick', race: 'Bellato', color: 'from-amber-800 to-stone-950', initials: 'CH' },
-  { id: 10, name: 'NovusPro', live: false, viewers: 'Offline', platform: 'Twitch', race: 'Cora', color: 'from-orange-900 to-stone-950', initials: 'NP' },
-  // Page 2
-  { id: 11, name: 'ElanRaider', live: true, viewers: '435', platform: 'YouTube', race: 'Accretia', color: 'from-red-600 to-orange-600', initials: 'ER' },
-  { id: 12, name: 'IsisSummoner', live: true, viewers: '310', platform: 'Twitch', race: 'Cora', color: 'from-orange-600 to-amber-600', initials: 'IS' },
-  { id: 13, name: 'GoliathPilot', live: false, viewers: 'Offline', platform: 'Kick', race: 'Bellato', color: 'from-amber-700 to-stone-900', initials: 'GP' },
-  { id: 14, name: 'CragMineKing', live: false, viewers: 'Offline', platform: 'FB Gaming', race: 'Accretia', color: 'from-red-800 to-stone-950', initials: 'CK' },
-  { id: 15, name: 'SolarForce', live: true, viewers: '245', platform: 'Twitch', race: 'Cora', color: 'from-amber-500 to-red-700', initials: 'SF' },
-  { id: 16, name: 'BerserkBell', live: false, viewers: 'Offline', platform: 'YouTube', race: 'Bellato', color: 'from-stone-700 to-orange-900', initials: 'BB' },
-  { id: 17, name: 'LauncherGod', live: false, viewers: 'Offline', platform: 'Kick', race: 'Accretia', color: 'from-red-700 to-stone-900', initials: 'LG' },
-  { id: 18, name: 'TalicHunter', live: false, viewers: 'Offline', platform: 'Twitch', race: 'Bellato', color: 'from-amber-700 to-stone-900', initials: 'TH' },
-  { id: 19, name: 'DecemBlade', live: false, viewers: 'Offline', platform: 'FB Gaming', race: 'Cora', color: 'from-orange-800 to-stone-950', initials: 'DB' },
-  { id: 20, name: 'NovaStriker', live: false, viewers: 'Offline', platform: 'YouTube', race: 'Accretia', color: 'from-stone-800 to-red-950', initials: 'NS' },
-];
-
-const TOP_PLAYERS_DATA = [
-  { rank: 1, name: 'Vexia', race: 'Cora', className: 'Warlock', level: 55, cpt: 492810, pvp: 14820, guild: 'SOLAR ECLIPSE' },
-  { rank: 2, name: 'TitanZero', race: 'Accretia', className: 'Striker', level: 55, cpt: 478450, pvp: 14190, guild: 'IRON DOMINION' },
-  { rank: 3, name: 'KaelenX', race: 'Bellato', className: 'Armor Rider', level: 55, cpt: 461200, pvp: 13650, guild: 'EMBER VANGUARD' },
-  { rank: 4, name: 'NyxShade', race: 'Cora', className: 'Grazier', level: 55, cpt: 442880, pvp: 12940, guild: 'ASHEN REAPERS' },
-  { rank: 5, name: 'MekLord', race: 'Accretia', className: 'Punisher', level: 55, cpt: 428640, pvp: 12310, guild: 'OMEGA SIEGE' },
-  { rank: 6, name: 'LyraNova', race: 'Bellato', className: 'Holy Chandra', level: 55, cpt: 408120, pvp: 11880, guild: 'AETHER FORGE' },
-  { rank: 7, name: 'RivenDark', race: 'Cora', className: 'Templar', level: 55, cpt: 394500, pvp: 11420, guild: 'NOVUS SENTINELS' },
-  { rank: 8, name: 'SoraMAU', race: 'Bellato', className: 'Berserker', level: 54, cpt: 381900, pvp: 10890, guild: 'VALKYRIE PROTOCOL' },
-  { rank: 9, name: 'SteelViper', race: 'Accretia', className: 'Dementer', level: 54, cpt: 369210, pvp: 10340, guild: 'MOLTEN LEGION' },
-  { rank: 10, name: 'KiraHex', race: 'Cora', className: 'Adventurer', level: 54, cpt: 352760, pvp: 9870, guild: 'CRIMSON COVENANT' },
-];
-
-const TOP_GUILDS_RANKING = [
-  { rank: 1, name: 'SOLAR ECLIPSE', race: 'Cora', leader: 'Vexia', members: 50, points: 2845000, grade: 'Grade 4' },
-  { rank: 2, name: 'EMBER VANGUARD', race: 'Bellato', leader: 'KaelenX', members: 49, points: 2710400, grade: 'Grade 4' },
-  { rank: 3, name: 'IRON DOMINION', race: 'Accretia', leader: 'TitanZero', members: 47, points: 2635900, grade: 'Grade 4' },
-  { rank: 4, name: 'ASHEN REAPERS', race: 'Cora', leader: 'NyxShade', members: 48, points: 2390200, grade: 'Grade 3' },
-  { rank: 5, name: 'OMEGA SIEGE', race: 'Accretia', leader: 'MekLord', members: 45, points: 2215800, grade: 'Grade 3' },
-  { rank: 6, name: 'AETHER FORGE', race: 'Bellato', leader: 'LyraNova', members: 43, points: 2044100, grade: 'Grade 3' },
-];
-
-const ARCHONS_COUNCIL_DATA = [
-  { rank: 1, name: 'KaelenX', race: 'Bellato', role: 'Archon (Race Leader)', level: 55, cpt: 461200, guild: 'EMBER VANGUARD' },
-  { rank: 2, name: 'Vexia', race: 'Cora', role: 'Archon (Race Leader)', level: 55, cpt: 492810, guild: 'SOLAR ECLIPSE' },
-  { rank: 3, name: 'TitanZero', race: 'Accretia', role: 'Archon (Race Leader)', level: 55, cpt: 478450, guild: 'IRON DOMINION' },
-  { rank: 4, name: 'LyraNova', race: 'Bellato', role: 'Left Consul (Offense)', level: 55, cpt: 408120, guild: 'AETHER FORGE' },
-  { rank: 5, name: 'NyxShade', race: 'Cora', role: 'Left Consul (Offense)', level: 55, cpt: 442880, guild: 'ASHEN REAPERS' },
-  { rank: 6, name: 'MekLord', race: 'Accretia', role: 'Left Consul (Offense)', level: 55, cpt: 428640, guild: 'OMEGA SIEGE' },
-  { rank: 7, name: 'SoraMAU', race: 'Bellato', role: 'Right Consul (Defense)', level: 54, cpt: 381900, guild: 'VALKYRIE PROTOCOL' },
-  { rank: 8, name: 'RivenDark', race: 'Cora', role: 'Right Consul (Defense)', level: 55, cpt: 394500, guild: 'NOVUS SENTINELS' },
-  { rank: 9, name: 'SteelViper', race: 'Accretia', role: 'Right Consul (Defense)', level: 54, cpt: 369210, guild: 'MOLTEN LEGION' },
-];
+const TOP_PLAYERS_DATA = [];
+const TOP_GUILDS_RANKING = [];
+const ARCHONS_COUNCIL_DATA = [];
 
 const DOWNLOAD_MIRRORS = [
   {
@@ -329,264 +267,6 @@ const INSTALL_STEPS = [
     step: '04',
     title: 'Configure & Enter Novus',
     desc: 'Open Settings in the launcher to pick Windowed or Borderless Fullscreen mode, set your audio device, and click PLAY NOW!',
-  },
-];
-
-const CRAFTING_RECIPES = [
-  {
-    id: 'c1',
-    name: 'Level 50/55 Intense Weapon',
-    category: 'WEAPONS',
-    rarity: 'INTENSE',
-    successRate: '75%',
-    npc: 'Hero NPC (Combine)',
-    race: 'All Races',
-    materials: [
-      { item: 'Normal Lv.50/55 Weapon (7 Slots)', qty: '1x' },
-      { item: 'Purple Excelsiar (Type-C)', qty: '1x' },
-      { item: 'Ignorant Talic', qty: '5x' },
-      { item: 'Beam', qty: '99x' },
-      { item: 'Gli', qty: '99x' },
-    ],
-    tips: 'Using a Type-C Purple Excelsiar yields the highest success rate (75%). Keep at least 10M Race Currency in your bag for the Hero NPC fee.',
-  },
-  {
-    id: 'c2',
-    name: 'Type-C (Orange) Level 55 Weapon',
-    category: 'WEAPONS',
-    rarity: 'TYPE-C',
-    successRate: '60%',
-    npc: 'Hero NPC (Combine)',
-    race: 'All Races',
-    materials: [
-      { item: 'Intense Lv.55 Weapon (Any Slot)', qty: '1x' },
-      { item: 'Ability Weapon (Vampire / Strong / Sharp)', qty: '1x' },
-      { item: 'Type-C Excelsiar (Matching Color)', qty: '1x' },
-      { item: 'Red Stone', qty: '10x' },
-      { item: 'Silver Catalyst', qty: '2x' },
-    ],
-    tips: 'Type-C weapons reduce level requirement (Lv.50–53) while keeping Lv.55 Intense damage plus the Ability bonus. Match Excelsiar color to weapon class.',
-  },
-  {
-    id: 'c3',
-    name: 'Leon Weapon Box & Relic Unsealing',
-    category: 'WEAPONS',
-    rarity: 'RELIC',
-    successRate: '85% / 100%',
-    npc: 'Hero NPC (Combine / Unseal)',
-    race: 'All Races',
-    materials: [
-      { item: 'Leon Instruction Piece (A, B, C, D) + Blueprint', qty: '1 Set' },
-      { item: 'OR Sealed Relic Weapon + Unsealing Scroll', qty: '1x' },
-      { item: 'Gold Catalyst', qty: '3x' },
-      { item: 'Ignorant / Keen Talic', qty: '10x' },
-    ],
-    tips: 'Unsealing a Sealed Relic from Elan Pit Bosses is 100% guaranteed on RF Archons of Novus. Leon combines yield Low, Medium, or High grade.',
-  },
-  {
-    id: 'c4',
-    name: 'Level 55 Intense Armor Set Part',
-    category: 'ARMORS',
-    rarity: 'INTENSE',
-    successRate: '80%',
-    npc: 'Hero NPC (Combine)',
-    race: 'All Races',
-    materials: [
-      { item: 'Normal Lv.55 Armor Piece', qty: '1x' },
-      { item: 'Excelsiar Type-B (Matching Class)', qty: '1x' },
-      { item: 'Favor Talic', qty: '5x' },
-      { item: 'Gli & Beam', qty: '50x each' },
-    ],
-    tips: 'Armor crafting uses Brown Excelsiar (Close Range), Green (Long Range), Yellow (Launcher), or White (Force).',
-  },
-  {
-    id: 'c5',
-    name: 'Level 55 Intense / Type-C Shield',
-    category: 'SHIELDS',
-    rarity: 'INTENSE',
-    successRate: '75%',
-    npc: 'Hero NPC (Combine)',
-    race: 'All Races',
-    materials: [
-      { item: 'Normal Lv.55 Shield (7 Slots)', qty: '1x' },
-      { item: 'Olive / Brown Excelsiar Type-C', qty: '1x' },
-      { item: 'Favor / Grace Talic', qty: '5x' },
-      { item: 'Silver Catalyst', qty: '3x' },
-    ],
-    tips: 'Type-C Anti-Critical or Block Shields are essential for surviving Accretia Siege Kits and Cora Isis bursts during Chip Wars.',
-  },
-  {
-    id: 'c6',
-    name: 'Elemental Ring / Amulet Upgrade (High)',
-    category: 'ACCESSORIES',
-    rarity: 'ACCESSORY',
-    successRate: '50%',
-    npc: 'Hero NPC (Combine)',
-    race: 'All Races',
-    materials: [
-      { item: 'Medium Elemental Ring / Amulet (20/20)', qty: '2x' },
-      { item: 'Crystal Talic', qty: '10x' },
-      { item: 'Gold Catalyst', qty: '5x' },
-      { item: 'Large Gold Stone (LGS)', qty: '3x' },
-    ],
-    tips: 'Upgrading two Medium Elementals has a 50% chance to forge a High Elemental (25/20 or 25/25). Failed attempts preserve one base accessory.',
-  },
-  {
-    id: 'c7',
-    name: 'Safe +4 to +5 / +6 Talic Upgrading',
-    category: 'TALICS & UPGRADES',
-    rarity: 'UPGRADE',
-    successRate: 'Varies',
-    npc: 'Item Upgrade Tool',
-    race: 'All Races',
-    materials: [
-      { item: 'Target Weapon / Armor (+4)', qty: '1x' },
-      { item: 'Ignorant / Favor / Keen Talic', qty: '1x' },
-      { item: 'T4 Gem Set (Ruby, Crystal, Topaz, Obsidian)', qty: '4x' },
-      { item: 'Jade of Relief (Optional Protection)', qty: '1x' },
-    ],
-    tips: 'Always slot full T4 Gems when attempting +5 and +6 upgrades! Up to +4 is safe with T3 Gems on RF Archons of Novus rates.',
-  },
-  {
-    id: 'c8',
-    name: '5000 HP Potion & Elemental Ammo Crafting',
-    category: 'POTION / AMMO',
-    rarity: 'CONSUMABLE',
-    successRate: '100%',
-    npc: 'Specialist Tool / Craft',
-    race: 'Specialist Class',
-    materials: [
-      { item: '3000 HP Potion Stack (99x)', qty: '2x' },
-      { item: 'Fire / Aqua / Terra / Wind Ore (+3)', qty: '10x' },
-      { item: 'Gli / Beam Dust', qty: '20x' },
-      { item: 'Specialist Crafting Blueprint', qty: '1x' },
-    ],
-    tips: 'Specialists can craft high-efficiency Elemental Bullets, Arrows, and 5000 HP Potions at 100% success for Chip War supplies and market profit.',
-  },
-];
-
-const DROP_LIST_DATA = [
-  {
-    id: 'd1',
-    monster: 'Brutal Rex / Turncoat',
-    type: 'ELITE',
-    zone: 'SETTE DESERT',
-    level: 45,
-    respawn: '2m',
-    drops: [
-      { name: 'Excelsiar Pieces (All Colors)', rate: '38%', tier: 'talic' },
-      { name: 'Lv.45 Intense Armor', rate: '12%', tier: 'intense' },
-      { name: 'Silver Catalyst', rate: '22%', tier: 'material' },
-      { name: 'Gold Catalyst', rate: '14%', tier: 'currency' },
-    ],
-  },
-  {
-    id: 'd2',
-    monster: 'Desert Pit Boss (Belphegor)',
-    type: 'PIT BOSS',
-    zone: 'SETTE DESERT',
-    level: 50,
-    respawn: '4h',
-    drops: [
-      { name: 'Elemental Accessories (Mid)', rate: '45%', tier: 'currency' },
-      { name: 'Lv.50 Intense Weapon', rate: '60%', tier: 'intense' },
-      { name: 'T4 Gem Box', rate: '80%', tier: 'talic' },
-      { name: 'Leon Instruction Piece', rate: '35%', tier: 'intense' },
-    ],
-  },
-  {
-    id: 'd3',
-    monster: 'Caliana Archer / Crew',
-    type: 'NORMAL',
-    zone: 'ETHER PLATFORM',
-    level: 49,
-    respawn: '45s',
-    drops: [
-      { name: 'Gli / Beam / Rian', rate: '65%', tier: 'material' },
-      { name: 'Cling / High-Value Loot', rate: '55%', tier: 'currency' },
-      { name: 'Lv.50 Normal 7-Slot Weapon', rate: '18%', tier: 'material' },
-    ],
-  },
-  {
-    id: 'd4',
-    monster: 'Ether Pit Boss (Calliana Queen)',
-    type: 'PIT BOSS',
-    zone: 'ETHER PLATFORM',
-    level: 53,
-    respawn: '6h',
-    drops: [
-      { name: 'Elemental Ring / Amulet (High)', rate: '40%', tier: 'currency' },
-      { name: 'Lv.50 Leon Weapon Box', rate: '50%', tier: 'intense' },
-      { name: 'Ignorant & Favor Talic (x5)', rate: '100%', tier: 'talic' },
-    ],
-  },
-  {
-    id: 'd5',
-    monster: 'Holystone Keeper (HSK)',
-    type: 'PIT BOSS',
-    zone: 'CRAG MINE',
-    level: 55,
-    respawn: 'Chip War',
-    drops: [
-      { name: 'Master Rune / Destruction Rune', rate: '75%', tier: 'talic' },
-      { name: 'Lv.55 Intense Weapon Box', rate: '85%', tier: 'intense' },
-      { name: 'T4 Gem Bundle', rate: '100%', tier: 'talic' },
-      { name: 'Gold Pig Statue (50M)', rate: '90%', tier: 'currency' },
-    ],
-  },
-  {
-    id: 'd6',
-    monster: 'Rock Jaw / Taraven',
-    type: 'PIT BOSS',
-    zone: 'ELAN PLATEAU',
-    level: 55,
-    respawn: '8h',
-    drops: [
-      { name: 'Sealed Relic Weapon (Lv.55)', rate: '30%', tier: 'intense' },
-      { name: 'High Elemental Accessory', rate: '55%', tier: 'currency' },
-      { name: 'Talic Crystal', rate: '80%', tier: 'talic' },
-    ],
-  },
-  {
-    id: 'd7',
-    monster: 'Dagnu / Dagan / Dagon (3D)',
-    type: 'PIT BOSS',
-    zone: 'ELAN PLATEAU',
-    level: 55,
-    respawn: '12h',
-    drops: [
-      { name: 'Sealed Relic Weapon (Lv.55)', rate: '65%', tier: 'intense' },
-      { name: '3D Perfect Elemental (25/25)', rate: '45%', tier: 'currency' },
-      { name: 'Relic Unsealing Scroll', rate: '70%', tier: 'talic' },
-      { name: 'Lv.55 Type-C Weapon', rate: '50%', tier: 'intense' },
-    ],
-  },
-  {
-    id: 'd8',
-    monster: 'Black Sign Commander',
-    type: 'ELITE',
-    zone: 'BIO LAB',
-    level: 55,
-    respawn: '5m',
-    drops: [
-      { name: 'Lv.55 Intense Armor Part', rate: '24%', tier: 'intense' },
-      { name: 'Ability Weapon (Lv.55)', rate: '18%', tier: 'intense' },
-      { name: 'T3 / T4 Gems', rate: '32%', tier: 'talic' },
-    ],
-  },
-  {
-    id: 'd9',
-    monster: 'Naroom Captain / Kukra',
-    type: 'ELITE',
-    zone: 'BEAST MOUNTAIN',
-    level: 53,
-    respawn: '3m',
-    drops: [
-      { name: 'Lv.53 Intense Armor', rate: '28%', tier: 'intense' },
-      { name: 'Crystal Talic', rate: '16%', tier: 'talic' },
-      { name: 'Red Stone', rate: '25%', tier: 'currency' },
-      { name: 'Rian', rate: '60%', tier: 'material' },
-    ],
   },
 ];
 
@@ -714,52 +394,6 @@ const RaceEmblemShowcase = ({ race }) => (
     >
       {race.id === 'bellato' ? 'MAU DIVISION' : race.id === 'cora' ? 'ANIMUS LEGION' : 'SIEGE ARTILLERY'}
     </div>
-  </div>
-);
-
-const CtaWarriorsGraphic = () => (
-  <div className="relative w-full h-56 sm:h-64 flex items-end justify-center overflow-hidden select-none">
-    <div
-      className="absolute inset-x-6 bottom-0 h-44 rounded-full blur-3xl opacity-45"
-      style={{ background: 'radial-gradient(circle, #ea580c, transparent 70%)' }}
-    />
-    <svg viewBox="0 0 320 220" className="relative w-full max-w-[320px] h-full drop-shadow-[0_0_22px_rgba(249,115,22,0.5)]">
-      {/* Left Warrior (Cora) */}
-      <g opacity="0.88">
-        <path
-          d="M52 72 L70 58 L88 72 L96 125 L84 210 L62 210 L58 148 L50 210 L32 210 L40 125 Z"
-          fill="#1c0f0a"
-          stroke="#f97316"
-          strokeWidth="1.8"
-        />
-        <circle cx="70" cy="46" r="11" fill="#1c0f0a" stroke="#f97316" strokeWidth="1.8" />
-        <line x1="94" y1="36" x2="88" y2="195" stroke="#fbbf24" strokeWidth="2.5" />
-        <circle cx="94" cy="34" r="6" fill="#fbbf24" />
-      </g>
-      {/* Right Warrior (Bellato) */}
-      <g opacity="0.88">
-        <path
-          d="M232 76 L252 60 L272 76 L280 128 L266 210 L248 210 L244 152 L236 210 L218 210 L224 128 Z"
-          fill="#1a120a"
-          stroke="#fbbf24"
-          strokeWidth="1.8"
-        />
-        <circle cx="252" cy="48" r="11" fill="#1a120a" stroke="#fbbf24" strokeWidth="1.8" />
-        <polygon points="214,88 232,96 226,144 206,136" fill="#1a120a" stroke="#fbbf24" strokeWidth="1.8" />
-      </g>
-      {/* Center Archon Titan */}
-      <g>
-        <path
-          d="M126 62 L160 40 L194 62 L214 96 L196 138 L188 215 L164 215 L160 154 L156 215 L132 215 L124 138 L106 96 Z"
-          fill="#241008"
-          stroke="#fde047"
-          strokeWidth="2.4"
-        />
-        <polygon points="160,18 176,32 172,48 148,48 144,32" fill="#2e1309" stroke="#fde047" strokeWidth="2" />
-        <rect x="150" y="32" width="20" height="5" rx="2" fill="#f97316" />
-        <polygon points="160,68 176,90 160,112 144,90" fill="#ea580c" fillOpacity="0.45" stroke="#fde047" strokeWidth="1.5" />
-      </g>
-    </svg>
   </div>
 );
 
@@ -1224,6 +858,64 @@ const ToastNotification = ({ message }) => {
   );
 };
 
+const BackgroundMusic = () => {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    let active = true;
+    audioRef.current.play().catch((error) => {
+      if (active) {
+        setMessage(error.name === 'NotAllowedError'
+          ? 'Autoplay blocked. Click to play.'
+          : 'Music could not be played.');
+      }
+    });
+    return () => { active = false; };
+  }, []);
+
+  const toggleMusic = () => {
+    const audio = audioRef.current;
+    if (!audio.paused) {
+      audio.pause();
+      return;
+    }
+    audio.play().catch((error) => {
+      setMessage(error.name === 'NotAllowedError'
+        ? 'Playback blocked by your browser.'
+        : 'Music could not be played.');
+    });
+  };
+
+  return (
+    <div className="fixed bottom-5 left-5 z-40 flex flex-col items-start gap-2">
+      <audio
+        ref={audioRef}
+        src="/Music/ost.mp3"
+        loop
+        preload="auto"
+        onPlay={() => { setIsPlaying(true); setMessage(''); }}
+        onPause={() => setIsPlaying(false)}
+        onError={() => setMessage('Music could not be loaded.')}
+      />
+      {message && (
+        <span role="status" className="rounded-lg bg-[#160e0b]/95 border border-orange-500/30 px-3 py-2 text-xs text-amber-100">
+          {message}
+        </span>
+      )}
+      <button
+        type="button"
+        onClick={toggleMusic}
+        className="inline-flex items-center gap-2 rounded-xl bg-[#160e0b]/95 border border-orange-500/30 px-4 py-3 text-xs font-rajdhani font-bold tracking-widest text-amber-100 hover:border-amber-400 transition-colors cursor-pointer"
+      >
+        {isPlaying ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+        {isPlaying ? 'PAUSE MUSIC' : 'PLAY MUSIC'}
+      </button>
+    </div>
+  );
+};
+
 // ============================================================================
 // 5. HOME PAGE MODULAR SECTIONS
 // ============================================================================
@@ -1278,6 +970,22 @@ const HeroSection = ({ onNavigate, onNotify }) => {
         />
         <line x1="0" y1="450" x2="1440" y2="450" stroke="#f97316" strokeWidth="1" strokeOpacity="0.35" />
       </svg>
+
+      <div className="hero-embers" aria-hidden="true">
+        {Array.from({ length: 28 }, (_, index) => (
+          <span
+            key={index}
+            className="hero-ember"
+            style={{
+              left: `${(index * 37 + 5) % 100}%`,
+              '--ember-size': `${2 + (index % 3)}px`,
+              '--ember-drift': `${(index % 2 === 0 ? 1 : -1) * (15 + (index % 5) * 8)}px`,
+              animationDuration: `${7 + (index % 6)}s`,
+              animationDelay: `${-(index * 0.7)}s`,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Centerpiece Content */}
       <div className="hero-content relative w-full max-w-5xl mx-auto px-4 sm:px-6 text-center pb-14 sm:pb-20 flex flex-1 flex-col items-center justify-center">
@@ -1541,8 +1249,19 @@ const NewsEventsSection = () => {
 };
 
 const ThreeRacesSection = () => {
-  const [selectedRaceId, setSelectedRaceId] = useState('bellato');
+  const [selection, setSelection] = useState({ id: 'bellato', delay: 1000 });
+  const selectedRaceId = selection.id;
   const race = RACES_DATA[selectedRaceId];
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setSelection(({ id }) => {
+        const raceIds = Object.keys(RACES_DATA);
+        return { id: raceIds[(raceIds.indexOf(id) + 1) % raceIds.length], delay: 1000 };
+      });
+    }, selection.delay);
+    return () => window.clearTimeout(timer);
+  }, [selection]);
 
   return (
     <section className="py-20">
@@ -1566,7 +1285,8 @@ const ThreeRacesSection = () => {
             return (
               <button
                 key={r.id}
-                onClick={() => setSelectedRaceId(r.id)}
+                onClick={() => setSelection({ id: r.id, delay: 4000 })}
+                aria-pressed={active}
                 className={`px-5 py-2.5 rounded-xl font-rajdhani text-xs sm:text-sm font-bold tracking-widest uppercase border transition-all cursor-pointer ${
                   active
                     ? 'bg-[#21140e] text-white shadow-[0_0_22px_rgba(249,115,22,0.3)]'
@@ -1731,14 +1451,20 @@ const ActiveGuildsSection = () => {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
+        {GUILDS_DATA.length === 0 && (
+          <div className="text-center py-12 rounded-2xl bg-[#160e0b] border border-orange-500/20 text-[#a89f96] text-sm">
+            No guild data available.
+          </div>
+        )}
+
+        {GUILDS_DATA.length > 0 && <div className="mt-8 text-center">
           <button
             onClick={() => setShowAll((prev) => !prev)}
             className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-600 to-red-600 hover:from-amber-400 hover:via-orange-500 hover:to-red-500 text-white font-rajdhani text-xs font-bold tracking-widest uppercase shadow-[0_0_22px_rgba(249,115,22,0.45)] transition-all cursor-pointer"
           >
             {showAll ? 'SHOW FEWER GUILDS' : 'VIEW MORE'}
           </button>
-        </div>
+        </div>}
       </div>
     </section>
   );
@@ -1747,7 +1473,7 @@ const ActiveGuildsSection = () => {
 const PartneredStreamersSection = ({ onNotify }) => {
   const [page, setPage] = useState(1);
   const perPage = 10;
-  const totalPages = Math.ceil(STREAMERS_DATA.length / perPage);
+  const totalPages = Math.max(1, Math.ceil(STREAMERS_DATA.length / perPage));
   const currentStreamers = STREAMERS_DATA.slice((page - 1) * perPage, page * perPage);
 
   return (
@@ -1814,8 +1540,14 @@ const PartneredStreamersSection = ({ onNotify }) => {
           ))}
         </div>
 
+        {STREAMERS_DATA.length === 0 && (
+          <div className="text-center py-12 rounded-2xl bg-[#160e0b] border border-orange-500/20 text-[#a89f96] text-sm">
+            No streamer data available.
+          </div>
+        )}
+
         {/* Pagination */}
-        <div className="mt-8 flex items-center justify-center gap-2">
+        {STREAMERS_DATA.length > 0 && <div className="mt-8 flex items-center justify-center gap-2">
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
@@ -1848,7 +1580,7 @@ const PartneredStreamersSection = ({ onNotify }) => {
           >
             <ChevronRight className="w-4 h-4" />
           </button>
-        </div>
+        </div>}
       </div>
     </section>
   );
@@ -1932,6 +1664,12 @@ const RankingsSection = () => {
           p.className.toLowerCase().includes(q))
     );
   }, [boardTab, raceFilter, searchQuery]);
+
+  const hasRankingData = (
+    boardTab === 'GUILDS' ? TOP_GUILDS_RANKING :
+    boardTab === 'ARCHONS' ? ARCHONS_COUNCIL_DATA :
+    TOP_PLAYERS_DATA
+  ).length > 0;
 
   return (
     <section id="ranking" className="py-20 scroll-mt-20">
@@ -2024,7 +1762,7 @@ const RankingsSection = () => {
                 {filteredRows.length === 0 ? (
                   <tr>
                     <td colSpan={6} className="py-10 text-center text-[#a89f96] text-xs">
-                      No entries match your current filter.
+                      {hasRankingData ? 'No entries match your current filter.' : 'No ranking data available.'}
                     </td>
                   </tr>
                 ) : (
@@ -2069,10 +1807,10 @@ const RankingsSection = () => {
   );
 };
 
-const JoinCtaBannerSection = ({ onNavigate, onNotify }) => (
+const JoinCtaBannerSection = ({ onNavigate }) => (
   <section className="py-20">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="cyber-card relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#26120a] via-[#160e0b] to-[#0d0705] border border-amber-500/35 p-8 sm:p-12 shadow-[0_0_50px_rgba(249,115,22,0.22)]">
+      <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#26120a] via-[#160e0b] to-[#0d0705] p-8 sm:p-12 shadow-[0_0_50px_rgba(249,115,22,0.22)]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-5">
             <h2 className="font-cinzel text-3xl sm:text-4xl font-black tracking-wide uppercase text-white leading-tight">
@@ -2102,17 +1840,17 @@ const JoinCtaBannerSection = ({ onNavigate, onNotify }) => (
               >
                 DOWNLOAD NOW
               </button>
-              <button
-                onClick={() => onNotify('Account Registration portal opened!')}
-                className="px-7 py-3.5 rounded-xl bg-[#0f0907] hover:bg-[#1f130d] border border-amber-500/40 text-amber-100 font-rajdhani text-xs sm:text-sm font-bold tracking-widest uppercase transition-all cursor-pointer"
+              <a
+                href={process.env.NEXT_PUBLIC_GAMECP_REGISTER_URL}
+                className="px-7 py-3.5 rounded-xl bg-[#0f0907] hover:bg-[#1f130d] border border-amber-500/40 text-amber-100 font-rajdhani text-xs sm:text-sm font-bold tracking-widest uppercase text-center transition-all cursor-pointer"
               >
                 REGISTER ACCOUNT
-              </button>
+              </a>
             </div>
           </div>
 
           <div className="lg:col-span-5">
-            <CtaWarriorsGraphic />
+            <Image src={raceImage} alt="Warriors from the three races" className="w-full h-auto" sizes="(max-width: 1023px) 100vw, 40vw" />
           </div>
         </div>
       </div>
@@ -2130,7 +1868,7 @@ const HomePage = ({ onNavigate, onOpenRules, onNotify }) => (
     <ActiveGuildsSection />
     <PartneredStreamersSection onNotify={onNotify} />
     <RankingsSection />
-    <JoinCtaBannerSection onNavigate={onNavigate} onNotify={onNotify} />
+    <JoinCtaBannerSection onNavigate={onNavigate} />
   </div>
 );
 
@@ -2272,17 +2010,9 @@ const DownloadPage = ({ onNotify }) => (
 const CraftingGuidePage = () => {
   const [category, setCategory] = useState('ALL');
   const [search, setSearch] = useState('');
-  const [selectedRecipe, setSelectedRecipe] = useState('c1');
+  const [selectedRecipe, setSelectedRecipe] = useState(CRAFTING_RECIPES[0]?.id ?? null);
 
-  const categories = [
-    'ALL',
-    'WEAPONS',
-    'ARMORS',
-    'SHIELDS',
-    'ACCESSORIES',
-    'TALICS & UPGRADES',
-    'POTION / AMMO',
-  ];
+  const categories = ['ALL', ...new Set(CRAFTING_RECIPES.map((recipe) => recipe.category))];
 
   const filteredRecipes = useMemo(() => {
     return CRAFTING_RECIPES.filter((r) => {
@@ -2454,15 +2184,7 @@ const DropListPage = () => {
   const [zone, setZone] = useState('ALL ZONES');
   const [pitBossOnly, setPitBossOnly] = useState(false);
 
-  const zones = [
-    'ALL ZONES',
-    'SETTE DESERT',
-    'ETHER PLATFORM',
-    'CRAG MINE',
-    'ELAN PLATEAU',
-    'BIO LAB',
-    'BEAST MOUNTAIN',
-  ];
+  const zones = ['ALL ZONES', ...new Set(DROP_LIST_DATA.map((entry) => entry.zone))];
 
   const filteredDrops = useMemo(() => {
     return DROP_LIST_DATA.filter((entry) => {
@@ -2774,6 +2496,29 @@ export default function App() {
         .hero-content {
           flex-grow: 1;
         }
+        .hero-embers {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        .hero-ember {
+          position: absolute;
+          bottom: 0;
+          width: var(--ember-size);
+          height: var(--ember-size);
+          border-radius: 50%;
+          background: #ffb347;
+          box-shadow: 0 0 6px 2px rgba(249, 115, 22, 0.65);
+          opacity: 0;
+          animation: ember-rise linear infinite;
+        }
+        @keyframes ember-rise {
+          0% { opacity: 0; transform: translate(0, 0); }
+          15% { opacity: 0.8; }
+          75% { opacity: 0.5; }
+          100% { opacity: 0; transform: translate(var(--ember-drift), -100vh); }
+        }
         .hero-logo > div,
         .hero-logo img {
           width: var(--hero-logo-size);
@@ -2852,6 +2597,9 @@ export default function App() {
           }
         }
         @media (prefers-reduced-motion: reduce) {
+          .hero-embers {
+            display: none;
+          }
           .scroll-reveal {
             opacity: 1;
             transform: none;
@@ -2887,6 +2635,7 @@ export default function App() {
 
       {/* Toast Notification */}
       <ToastNotification message={toastMessage} />
+      <BackgroundMusic />
     </div>
   );
 }

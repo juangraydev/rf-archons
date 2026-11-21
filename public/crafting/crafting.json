@@ -1,0 +1,234 @@
+[
+  {
+    "id": "c1",
+    "name": "Level 50/55 Intense Weapon",
+    "category": "WEAPONS",
+    "rarity": "INTENSE",
+    "successRate": "75%",
+    "npc": "Hero NPC (Combine)",
+    "race": "All Races",
+    "materials": [
+      {
+        "item": "Normal Lv.50/55 Weapon (7 Slots)",
+        "qty": "1x"
+      },
+      {
+        "item": "Purple Excelsiar (Type-C)",
+        "qty": "1x"
+      },
+      {
+        "item": "Ignorant Talic",
+        "qty": "5x"
+      },
+      {
+        "item": "Beam",
+        "qty": "99x"
+      },
+      {
+        "item": "Gli",
+        "qty": "99x"
+      }
+    ],
+    "tips": "Using a Type-C Purple Excelsiar yields the highest success rate (75%). Keep at least 10M Race Currency in your bag for the Hero NPC fee."
+  },
+  {
+    "id": "c2",
+    "name": "Type-C (Orange) Level 55 Weapon",
+    "category": "WEAPONS",
+    "rarity": "TYPE-C",
+    "successRate": "60%",
+    "npc": "Hero NPC (Combine)",
+    "race": "All Races",
+    "materials": [
+      {
+        "item": "Intense Lv.55 Weapon (Any Slot)",
+        "qty": "1x"
+      },
+      {
+        "item": "Ability Weapon (Vampire / Strong / Sharp)",
+        "qty": "1x"
+      },
+      {
+        "item": "Type-C Excelsiar (Matching Color)",
+        "qty": "1x"
+      },
+      {
+        "item": "Red Stone",
+        "qty": "10x"
+      },
+      {
+        "item": "Silver Catalyst",
+        "qty": "2x"
+      }
+    ],
+    "tips": "Type-C weapons reduce level requirement (Lv.50–53) while keeping Lv.55 Intense damage plus the Ability bonus. Match Excelsiar color to weapon class."
+  },
+  {
+    "id": "c3",
+    "name": "Leon Weapon Box & Relic Unsealing",
+    "category": "WEAPONS",
+    "rarity": "RELIC",
+    "successRate": "85% / 100%",
+    "npc": "Hero NPC (Combine / Unseal)",
+    "race": "All Races",
+    "materials": [
+      {
+        "item": "Leon Instruction Piece (A, B, C, D) + Blueprint",
+        "qty": "1 Set"
+      },
+      {
+        "item": "OR Sealed Relic Weapon + Unsealing Scroll",
+        "qty": "1x"
+      },
+      {
+        "item": "Gold Catalyst",
+        "qty": "3x"
+      },
+      {
+        "item": "Ignorant / Keen Talic",
+        "qty": "10x"
+      }
+    ],
+    "tips": "Unsealing a Sealed Relic from Elan Pit Bosses is 100% guaranteed on RF Archons of Novus. Leon combines yield Low, Medium, or High grade."
+  },
+  {
+    "id": "c4",
+    "name": "Level 55 Intense Armor Set Part",
+    "category": "ARMORS",
+    "rarity": "INTENSE",
+    "successRate": "80%",
+    "npc": "Hero NPC (Combine)",
+    "race": "All Races",
+    "materials": [
+      {
+        "item": "Normal Lv.55 Armor Piece",
+        "qty": "1x"
+      },
+      {
+        "item": "Excelsiar Type-B (Matching Class)",
+        "qty": "1x"
+      },
+      {
+        "item": "Favor Talic",
+        "qty": "5x"
+      },
+      {
+        "item": "Gli & Beam",
+        "qty": "50x each"
+      }
+    ],
+    "tips": "Armor crafting uses Brown Excelsiar (Close Range), Green (Long Range), Yellow (Launcher), or White (Force)."
+  },
+  {
+    "id": "c5",
+    "name": "Level 55 Intense / Type-C Shield",
+    "category": "SHIELDS",
+    "rarity": "INTENSE",
+    "successRate": "75%",
+    "npc": "Hero NPC (Combine)",
+    "race": "All Races",
+    "materials": [
+      {
+        "item": "Normal Lv.55 Shield (7 Slots)",
+        "qty": "1x"
+      },
+      {
+        "item": "Olive / Brown Excelsiar Type-C",
+        "qty": "1x"
+      },
+      {
+        "item": "Favor / Grace Talic",
+        "qty": "5x"
+      },
+      {
+        "item": "Silver Catalyst",
+        "qty": "3x"
+      }
+    ],
+    "tips": "Type-C Anti-Critical or Block Shields are essential for surviving Accretia Siege Kits and Cora Isis bursts during Chip Wars."
+  },
+  {
+    "id": "c6",
+    "name": "Elemental Ring / Amulet Upgrade (High)",
+    "category": "ACCESSORIES",
+    "rarity": "ACCESSORY",
+    "successRate": "50%",
+    "npc": "Hero NPC (Combine)",
+    "race": "All Races",
+    "materials": [
+      {
+        "item": "Medium Elemental Ring / Amulet (20/20)",
+        "qty": "2x"
+      },
+      {
+        "item": "Crystal Talic",
+        "qty": "10x"
+      },
+      {
+        "item": "Gold Catalyst",
+        "qty": "5x"
+      },
+      {
+        "item": "Large Gold Stone (LGS)",
+        "qty": "3x"
+      }
+    ],
+    "tips": "Upgrading two Medium Elementals has a 50% chance to forge a High Elemental (25/20 or 25/25). Failed attempts preserve one base accessory."
+  },
+  {
+    "id": "c7",
+    "name": "Safe +4 to +5 / +6 Talic Upgrading",
+    "category": "TALICS & UPGRADES",
+    "rarity": "UPGRADE",
+    "successRate": "Varies",
+    "npc": "Item Upgrade Tool",
+    "race": "All Races",
+    "materials": [
+      {
+        "item": "Target Weapon / Armor (+4)",
+        "qty": "1x"
+      },
+      {
+        "item": "Ignorant / Favor / Keen Talic",
+        "qty": "1x"
+      },
+      {
+        "item": "T4 Gem Set (Ruby, Crystal, Topaz, Obsidian)",
+        "qty": "4x"
+      },
+      {
+        "item": "Jade of Relief (Optional Protection)",
+        "qty": "1x"
+      }
+    ],
+    "tips": "Always slot full T4 Gems when attempting +5 and +6 upgrades! Up to +4 is safe with T3 Gems on RF Archons of Novus rates."
+  },
+  {
+    "id": "c8",
+    "name": "5000 HP Potion & Elemental Ammo Crafting",
+    "category": "POTION / AMMO",
+    "rarity": "CONSUMABLE",
+    "successRate": "100%",
+    "npc": "Specialist Tool / Craft",
+    "race": "Specialist Class",
+    "materials": [
+      {
+        "item": "3000 HP Potion Stack (99x)",
+        "qty": "2x"
+      },
+      {
+        "item": "Fire / Aqua / Terra / Wind Ore (+3)",
+        "qty": "10x"
+      },
+      {
+        "item": "Gli / Beam Dust",
+        "qty": "20x"
+      },
+      {
+        "item": "Specialist Crafting Blueprint",
+        "qty": "1x"
+      }
+    ],
+    "tips": "Specialists can craft high-efficiency Elemental Bullets, Arrows, and 5000 HP Potions at 100% success for Chip War supplies and market profit."
+  }
+]

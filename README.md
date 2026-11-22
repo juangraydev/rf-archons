@@ -38,7 +38,14 @@ Both files are imported at build time, so rebuild and redeploy after editing the
 
 The site plays `public/Music/ost.mp3` on a loop. Browsers may block autoplay with sound; visitors can start or pause playback using the music button.
 
-Set `NEXT_PUBLIC_GAMECP_REGISTER_URL` in the build environment to the GameCP registration URL. The header and registration card both use this setting.
+## Public links
+
+Configure these values in `.env.local` for local development and in the build environment for deployment. See `.env.example` for the variable names. All `NEXT_PUBLIC_` values are public and are embedded at build time, so rebuild and redeploy after changing them.
+
+- `NEXT_PUBLIC_DISCORD_URL`: Discord invite used by the home page and footer.
+- `NEXT_PUBLIC_DOWNLOADS_ENABLED`: set to `true` to enable download links, or `false` to show Coming Soon.
+- `NEXT_PUBLIC_DOWNLOAD_GOOGLE_DRIVE_URL`, `NEXT_PUBLIC_DOWNLOAD_MEGA_URL`, `NEXT_PUBLIC_DOWNLOAD_MEDIAFIRE_URL`: client mirror links. An enabled mirror without a URL displays Link unavailable.
+- `NEXT_PUBLIC_GAMECP_LOGIN_URL` and `NEXT_PUBLIC_GAMECP_REGISTER_URL`: GameCP login and registration links.
 
 ## Cloudflare deployment
 

@@ -202,6 +202,9 @@ const TOP_PLAYERS_DATA = [];
 const TOP_GUILDS_RANKING = [];
 const ARCHONS_COUNCIL_DATA = [];
 
+const DISCORD_URL = process.env.NEXT_PUBLIC_DISCORD_URL;
+const DOWNLOADS_ENABLED = process.env.NEXT_PUBLIC_DOWNLOADS_ENABLED === 'true';
+
 const DOWNLOAD_MIRRORS = [
   {
     id: 'gdrive',
@@ -213,6 +216,7 @@ const DOWNLOAD_MIRRORS = [
     file: 'RF_ArchonsOfNovus_v2.2.3.2.rar',
     sha256: '8f4a2e91c7d3...b904e1',
     accent: 'from-amber-500 via-orange-600 to-red-600',
+    url: process.env.NEXT_PUBLIC_DOWNLOAD_GOOGLE_DRIVE_URL,
   },
   {
     id: 'mega',
@@ -224,6 +228,7 @@ const DOWNLOAD_MIRRORS = [
     file: 'RF_ArchonsOfNovus_v2.2.3.2.rar',
     sha256: '8f4a2e91c7d3...b904e1',
     accent: 'from-red-600 to-orange-700',
+    url: process.env.NEXT_PUBLIC_DOWNLOAD_MEGA_URL,
   },
   {
     id: 'mediafire',
@@ -235,6 +240,7 @@ const DOWNLOAD_MIRRORS = [
     file: 'RF_ArchonsOfNovus_v2.2.3.2.rar',
     sha256: '8f4a2e91c7d3...b904e1',
     accent: 'from-orange-500 to-amber-700',
+    url: process.env.NEXT_PUBLIC_DOWNLOAD_MEDIAFIRE_URL,
   },
 ];
 
@@ -766,14 +772,18 @@ const FooterSection = ({ onNavigate, onScrollToSection, onOpenRules }) => (
               </a>
             </li>
             <li>
-              <a
-                href="https://discord.gg/AzhqApjuv"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-amber-400 transition-colors"
-              >
-                Discord
-              </a>
+              {DISCORD_URL ? (
+                <a
+                  href={DISCORD_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber-400 transition-colors"
+                >
+                  Discord
+                </a>
+              ) : (
+                <span>Discord unavailable</span>
+              )}
             </li>
             <li>
               <a
@@ -920,23 +930,7 @@ const BackgroundMusic = () => {
 // 5. HOME PAGE MODULAR SECTIONS
 // ============================================================================
 
-const HeroSection = ({ onNavigate, onNotify }) => {
-  const [secondsLeft, setSecondsLeft] = useState(2 * 3600 + 14 * 60 + 38);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSecondsLeft((prev) => (prev > 0 ? prev - 1 : 8 * 3600));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const formatTime = (totalSec) => {
-    const h = String(Math.floor(totalSec / 3600)).padStart(2, '0');
-    const m = String(Math.floor((totalSec % 3600) / 60)).padStart(2, '0');
-    const s = String(totalSec % 60).padStart(2, '0');
-    return `${h}:${m}:${s}`;
-  };
-
+const HeroSection = ({ onNavigate }) => {
   return (
     <section className="hero-section relative flex flex-col overflow-hidden pb-0">
       {/* Volcanic Ember Ambient Glows */}
@@ -990,7 +984,7 @@ const HeroSection = ({ onNavigate, onNotify }) => {
       {/* Centerpiece Content */}
       <div className="hero-content relative w-full max-w-5xl mx-auto px-4 sm:px-6 text-center pb-14 sm:pb-20 flex flex-1 flex-col items-center justify-center">
         <div className="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/15 border border-amber-400/35 text-amber-300 text-[11px] font-rajdhani font-bold tracking-widest uppercase mb-5">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-red-400" />
           LEVEL 55 • MID-RATE PVP
         </div>
 
@@ -1019,26 +1013,34 @@ const HeroSection = ({ onNavigate, onNotify }) => {
             <Download className="w-4 h-4" />
             DOWNLOAD CLIENT
           </button>
-          <button
-            onClick={() => onNotify('Discord invite copied: discord.gg/archonsofnovus')}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[#160e0b]/90 hover:bg-[#241610] border border-amber-500/40 text-amber-100 font-rajdhani text-sm font-bold tracking-widest uppercase transition-all cursor-pointer"
-          >
-            <MessageSquare className="w-4 h-4 text-amber-400" />
-            JOIN DISCORD
-          </button>
+          {DISCORD_URL ? (
+            <a
+              href={DISCORD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[#160e0b]/90 hover:bg-[#241610] border border-amber-500/40 text-amber-100 font-rajdhani text-sm font-bold tracking-widest uppercase transition-all cursor-pointer"
+            >
+              <MessageSquare className="w-4 h-4 text-amber-400" />
+              JOIN DISCORD
+            </a>
+          ) : (
+            <button disabled className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-[#160e0b]/90 border border-amber-500/40 text-amber-100 font-rajdhani text-sm font-bold tracking-widest uppercase opacity-50 cursor-not-allowed">
+              DISCORD UNAVAILABLE
+            </button>
+          )}
         </div>
       </div>
 
-      {/* Bottom 4-Column Live Status Bar */}
+      {/* Bottom 4-Column Status Bar */}
       <div className="relative bg-[#0f0907]/95 backdrop-blur-md">
         <div className="hero-status-grid max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4">
           <div className="py-4 px-4 flex flex-col items-center text-center">
             <span className="text-[10px] font-rajdhani font-bold tracking-widest uppercase text-[#a89f96]">
               SERVER STATUS
             </span>
-            <div className="mt-1 flex items-center gap-2 font-rajdhani text-base font-bold text-emerald-400">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399] animate-pulse" />
-              ONLINE
+            <div className="mt-1 flex items-center gap-2 font-rajdhani text-base font-bold text-red-400">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-400 shadow-[0_0_10px_#f87171]" />
+              OFFLINE
             </div>
           </div>
 
@@ -1047,7 +1049,7 @@ const HeroSection = ({ onNavigate, onNotify }) => {
               PLAYERS ONLINE
             </span>
             <div className="mt-1 font-rajdhani text-base font-bold text-[#faf6f0]">
-              1,542 <span className="text-xs text-amber-400 font-semibold">ACTIVE</span>
+              -
             </div>
           </div>
 
@@ -1056,7 +1058,7 @@ const HeroSection = ({ onNavigate, onNotify }) => {
               NEXT CHIP WAR
             </span>
             <div className="mt-1 font-rajdhani text-base font-bold text-amber-300 tabular-nums">
-              {formatTime(secondsLeft)}
+              -
             </div>
           </div>
 
@@ -1860,7 +1862,7 @@ const JoinCtaBannerSection = ({ onNavigate }) => (
 
 const HomePage = ({ onNavigate, onOpenRules, onNotify }) => (
   <div>
-    <HeroSection onNavigate={onNavigate} onNotify={onNotify} />
+    <HeroSection onNavigate={onNavigate} />
     <ServerInfoSection onNavigate={onNavigate} onOpenRules={onOpenRules} />
     <NewsEventsSection />
     <ThreeRacesSection />
@@ -1934,13 +1936,25 @@ const DownloadPage = ({ onNotify }) => (
                   </div>
                 </div>
               </div>
-              <button
-                onClick={() => onNotify(`Starting download via ${mirror.name} (${mirror.size})...`)}
-                className={`mt-5 w-full py-2.5 rounded-lg bg-gradient-to-r ${mirror.accent} hover:brightness-110 text-white font-rajdhani text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 transition-all cursor-pointer`}
-              >
-                <FileDown className="w-4 h-4" />
-                Download
-              </button>
+              {DOWNLOADS_ENABLED && mirror.url ? (
+                <a
+                  href={mirror.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mt-5 w-full py-2.5 rounded-lg bg-gradient-to-r ${mirror.accent} hover:brightness-110 text-white font-rajdhani text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 transition-all`}
+                >
+                  <FileDown className="w-4 h-4" />
+                  Download
+                </a>
+              ) : (
+                <button
+                  disabled
+                  className={`mt-5 w-full py-2.5 rounded-lg bg-gradient-to-r ${mirror.accent} text-white font-rajdhani text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 opacity-50 cursor-not-allowed`}
+                >
+                  <FileDown className="w-4 h-4" />
+                  {DOWNLOADS_ENABLED ? 'Link unavailable' : 'Coming soon'}
+                </button>
+              )}
             </div>
           ))}
         </div>
@@ -2582,7 +2596,8 @@ export default function App() {
             gap: 0.5rem;
             margin-top: 0.75rem;
           }
-          .hero-actions > button {
+          .hero-actions > button,
+          .hero-actions > a {
             padding-top: 0.6rem;
             padding-bottom: 0.6rem;
           }
